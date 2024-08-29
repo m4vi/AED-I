@@ -1,0 +1,40 @@
+#include <stdio.h>
+int senha_valida(char senha[8])
+{
+    int cont_caracteres = 0;
+    for (int i = 0; senha[i] != 0; i++) 
+    {
+        cont_caracteres += 1;
+    }
+    //printf("%d", cont_caracteres);
+    if (cont_caracteres >= 8) // se a senha em no minimo 8 caracteres
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            if ((senha[i] == 55) || (senha[i] == 50)) // se a senha tem no minimo um 7 ou 2
+            {
+                return 1;
+            }
+        }
+        return 0;
+    }
+    return 0;
+}
+
+int main()
+{
+    char senha[8];
+    int retorno;
+
+    do
+    {
+        printf("\nDigite uma senha: ");
+        gets(senha);
+
+        retorno = senha_valida(senha);
+
+        //printf("Retorno: %d", retorno);
+    } while (retorno != 1);
+
+    return 0;
+}
